@@ -12,6 +12,7 @@ public class Mage extends Character {
     public Mage(String name) {
         this.name = name;
         this.level = 1;
+
         int strength = 1;
         int dexterity = 1;
         int vitality = 5;
@@ -35,6 +36,15 @@ public class Mage extends Character {
         primaryAttributes.setDexterity(dexterity += 1);
         primaryAttributes.setIntelligence(intelligence += 5);
         primaryAttributes.setVitality(vitality += 3);
+
+        updateSecondaryAttributes();
+    }
+
+    private void updateSecondaryAttributes() {
+        int health = primaryAttributes.getVitality() * 10;
+        int armorRating = primaryAttributes.getStrength() + primaryAttributes.getDexterity();
+        int elementalResistance = primaryAttributes.getIntelligence();
+        this.secondaryAttributes = new SecondaryAttributes(health, armorRating, elementalResistance);
     }
 
     @Override
