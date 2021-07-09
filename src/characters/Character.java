@@ -28,6 +28,18 @@ public abstract class Character {
         this.name = name;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    protected PrimaryAttributes getPrimaryAttributes() {
+        return primaryAttributes;
+    }
+
+    protected SecondaryAttributes getSecondaryAttributes() {
+        return secondaryAttributes;
+    }
+
     public abstract void levelUp();
 
     public abstract String toString();
