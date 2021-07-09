@@ -9,9 +9,9 @@ public abstract class Character {
     private PrimaryAttributes primaryAttributes;
     private SecondaryAttributes secondaryAttributes;
 
-    public Character(String name, int level, int strength, int dexterity, int intelligence, int vitality) {
+    public Character(String name, int strength, int dexterity, int intelligence, int vitality) {
         this.name = name;
-        this.level = level;
+        this.level = 1;
         this.primaryAttributes = new PrimaryAttributes(strength, dexterity, intelligence, vitality);
 
         int health = vitality * 10;
