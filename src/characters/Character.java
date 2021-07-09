@@ -1,7 +1,5 @@
 package characters;
 
-import java.util.HashMap;
-
 public abstract class Character {
     private String name;
     private int level;
