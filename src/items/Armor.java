@@ -27,4 +27,15 @@ public class Armor extends Item {
     public void setPrimaryAttributes(PrimaryAttributes primaryAttributes) {
         this.primaryAttributes = primaryAttributes;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        result.append(super.toString());
+        result.append("Armor type: " + armorType.name() + "\n");
+        result.append(this.primaryAttributes.toString());
+
+        return result.toString();
+    }
 }
