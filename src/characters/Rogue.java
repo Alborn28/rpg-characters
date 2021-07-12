@@ -4,8 +4,6 @@ import items.*;
 import items.exceptions.InvalidArmorException;
 import items.exceptions.InvalidWeaponException;
 
-import java.util.HashMap;
-
 public class Rogue extends Hero {
     public Rogue(String name) {
         super(name, 2, 6, 8 ,1);

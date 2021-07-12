@@ -4,8 +4,6 @@ import items.*;
 import items.exceptions.InvalidArmorException;
 import items.exceptions.InvalidWeaponException;
 
-import java.util.HashMap;
-
 public class Ranger extends Hero {
     public Ranger(String name) {
         super(name, 1, 7, 8 ,1);
