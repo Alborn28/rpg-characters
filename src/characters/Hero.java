@@ -157,10 +157,7 @@ public abstract class Hero {
             }
         }
 
-        totalPrimaryAttributes.setStrength(strength);
-        totalPrimaryAttributes.setDexterity(dexterity);
-        totalPrimaryAttributes.setIntelligence(intelligence);
-        totalPrimaryAttributes.setVitality(vitality);
+        totalPrimaryAttributes = new PrimaryAttributes(strength, dexterity, vitality, intelligence);
     }
 
     public String toString() {
