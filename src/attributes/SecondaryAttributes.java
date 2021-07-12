@@ -34,4 +34,15 @@ public class SecondaryAttributes {
     public void setElementalResistance(int elementalResistance) {
         this.elementalResistance = elementalResistance;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        result.append("Health: " + this.getHealth() + "\n");
+        result.append("Armor rating: " + this.getArmorRating() + "\n");
+        result.append("Elemental resistance: " + this.getElementalResistance() + "\n");
+
+        return result.toString();
+    }
 }

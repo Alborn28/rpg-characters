@@ -171,13 +171,8 @@ public abstract class Hero {
 
         result.append("Name: " + this.getName() + "\n");
         result.append("Level: " + this.getLevel() + "\n");
-        result.append("Strength: " + totalPrimaryAttributes.getStrength() + "\n");
-        result.append("Dexterity: " + totalPrimaryAttributes.getDexterity() + "\n");
-        result.append("Intelligence: " + totalPrimaryAttributes.getIntelligence() + "\n");
-        result.append("Vitality: " + totalPrimaryAttributes.getVitality() + "\n");
-        result.append("Health: " + secondaryAttributes.getHealth() + "\n");
-        result.append("Armor Rating: " + secondaryAttributes.getArmorRating() + "\n");
-        result.append("Elemental Resistance: " + secondaryAttributes.getElementalResistance() + "\n");
+        result.append(totalPrimaryAttributes.toString());
+        result.append(secondaryAttributes.toString());
 
         return result.toString();
     }
