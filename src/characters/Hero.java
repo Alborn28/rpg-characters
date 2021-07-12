@@ -2,12 +2,21 @@ package characters;
 
 import attributes.PrimaryAttributes;
 import attributes.SecondaryAttributes;
+import items.Armor;
+import items.Item;
+import items.ItemSlot;
+import items.Weapon;
+import items.exceptions.InvalidArmorException;
+import items.exceptions.InvalidWeaponException;
+
+import java.util.HashMap;
 
 public abstract class Hero {
     private String name;
     private int level;
     private PrimaryAttributes primaryAttributes;
     private SecondaryAttributes secondaryAttributes;
+    private HashMap<ItemSlot, Item> equipment;
 
     public Hero(String name, int strength, int dexterity, int vitality, int intelligence) {
         this.name = name;
@@ -19,6 +28,8 @@ public abstract class Hero {
         int armorRating = strength + dexterity;
         int elementalResistance = intelligence;
         this.secondaryAttributes = new SecondaryAttributes(health, armorRating, elementalResistance);
+
+        equipment = new HashMap<ItemSlot, Item>();
     }
 
     public String getName() {
@@ -45,6 +56,14 @@ public abstract class Hero {
         return secondaryAttributes;
     }
 
+    public HashMap<ItemSlot, Item> getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(HashMap<ItemSlot, Item> equipment) {
+        this.equipment = equipment;
+    }
+
     public abstract void levelUp();
 
     protected void levelUpHero(int strength, int dexterity, int vitality, int intelligence) {
@@ -69,6 +88,10 @@ public abstract class Hero {
         int elementalResistance = primaryAttributes.getIntelligence();
         this.secondaryAttributes = new SecondaryAttributes(health, armorRating, elementalResistance);
     }
+
+    public abstract void equip(Weapon weapon) throws InvalidWeaponException;
+
+    public abstract void equip(Armor armor) throws InvalidArmorException;
 
     public String toString() {
         updateSecondaryAttributes();
