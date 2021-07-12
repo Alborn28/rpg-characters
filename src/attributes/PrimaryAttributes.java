@@ -44,4 +44,15 @@ public class PrimaryAttributes {
     public void setVitality(int vitality) {
         this.vitality = vitality;
     }
+
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        result.append("Strength: " + this.getStrength() + "\n");
+        result.append("Dexterity: " + this.getDexterity() + "\n");
+        result.append("Vitality: " + this.getVitality() + "\n");
+        result.append("Intelligence: " + this.getIntelligence() + "\n");
+
+        return result.toString();
+    }
 }

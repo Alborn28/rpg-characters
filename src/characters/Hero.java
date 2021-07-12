@@ -64,20 +64,22 @@ public abstract class Hero {
         this.equipment = equipment;
     }
 
+    public Item getEquipmentHead() {
+        return equipment.get(ItemSlot.HEAD);
+    }
+
     public abstract void levelUp();
 
     protected void levelUpHero(int strength, int dexterity, int vitality, int intelligence) {
-        PrimaryAttributes primary = getPrimaryAttributes();
+        int currentStrength = primaryAttributes.getStrength();
+        int currentDexterity = primaryAttributes.getDexterity();
+        int currentIntelligence = primaryAttributes.getIntelligence();
+        int currentVitality = primaryAttributes.getVitality();
 
-        int currentStrength = primary.getStrength();
-        int currentDexterity = primary.getDexterity();
-        int currentIntelligence = primary.getIntelligence();
-        int currentVitality = primary.getVitality();
-
-        primary.setStrength(currentStrength += strength);
-        primary.setDexterity(currentDexterity += dexterity);
-        primary.setVitality(currentVitality += vitality);
-        primary.setIntelligence(currentIntelligence += intelligence);
+        primaryAttributes.setStrength(currentStrength += strength);
+        primaryAttributes.setDexterity(currentDexterity += dexterity);
+        primaryAttributes.setVitality(currentVitality += vitality);
+        primaryAttributes.setIntelligence(currentIntelligence += intelligence);
 
         level++;
     }
@@ -93,13 +95,35 @@ public abstract class Hero {
 
     public abstract void equip(Armor armor) throws InvalidArmorException;
 
+    protected void equipHero(Weapon weapon) throws InvalidWeaponException {
+        if(weapon.getRequiredLevel() <= this.getLevel()) {
+            HashMap<ItemSlot, Item> equipment = this.getEquipment();
+            equipment.put(weapon.getSlot(), weapon);
+        }
+
+        else {
+            throw new InvalidWeaponException("Your character's level is not high enough to equip that weapon!");
+        }
+    }
+
+    protected void equipHero(Armor armor) throws InvalidArmorException {
+        if(armor.getRequiredLevel() <= this.getLevel()) {
+            HashMap<ItemSlot, Item> equipment = this.getEquipment();
+            equipment.put(armor.getSlot(), armor);
+        }
+
+        else {
+            throw new InvalidArmorException("Your character's level is not high enough to equip that piece of armor!");
+        }
+    }
+
     public String toString() {
-        updateSecondaryAttributes();
+        this.updateSecondaryAttributes();
 
         StringBuilder result = new StringBuilder();
 
-        result.append("Name: " + getName() + "\n");
-        result.append("Level: " + getLevel() + "\n");
+        result.append("Name: " + this.getName() + "\n");
+        result.append("Level: " + this.getLevel() + "\n");
         result.append("Strength: " + primaryAttributes.getStrength() + "\n");
         result.append("Dexterity: " + primaryAttributes.getDexterity() + "\n");
         result.append("Intelligence: " + primaryAttributes.getIntelligence() + "\n");
