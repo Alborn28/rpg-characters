@@ -21,6 +21,7 @@ public abstract class Hero {
         level = 1;
 
         this.basePrimaryAttributes = new PrimaryAttributes(strength, dexterity, vitality, intelligence);
+        this.totalPrimaryAttributes = new PrimaryAttributes(strength, dexterity, vitality, intelligence);
 
         int health = vitality * 10;
         int armorRating = strength + dexterity;
@@ -62,8 +63,8 @@ public abstract class Hero {
         this.equipment = equipment;
     }
 
-    public Item getEquipmentHead() {
-        return equipment.get(ItemSlot.HEAD);
+    public PrimaryAttributes getTotalPrimaryAttributes() {
+        return totalPrimaryAttributes;
     }
 
     public abstract void levelUp();
@@ -80,6 +81,9 @@ public abstract class Hero {
         basePrimaryAttributes.setIntelligence(currentIntelligence += intelligence);
 
         level++;
+
+        this.updateSecondaryAttributes();
+        this.updateTotalAttributes();
     }
 
     public abstract void equip(Weapon weapon) throws InvalidWeaponException;
@@ -91,6 +95,9 @@ public abstract class Hero {
             if(weapon.getSlot() == ItemSlot.WEAPON) {
                 HashMap<ItemSlot, Item> equipment = this.getEquipment();
                 equipment.put(weapon.getSlot(), weapon);
+
+                this.updateSecondaryAttributes();
+                this.updateTotalAttributes();
             }
 
             else {
@@ -108,6 +115,9 @@ public abstract class Hero {
             if(armor.getSlot() != ItemSlot.WEAPON) {
                 HashMap<ItemSlot, Item> equipment = this.getEquipment();
                 equipment.put(armor.getSlot(), armor);
+
+                this.updateSecondaryAttributes();
+                this.updateTotalAttributes();
             }
 
             else {
@@ -121,23 +131,46 @@ public abstract class Hero {
     }
 
     private void updateSecondaryAttributes() {
-        int health = basePrimaryAttributes.getVitality() * 10;
-        int armorRating = basePrimaryAttributes.getStrength() + basePrimaryAttributes.getDexterity();
-        int elementalResistance = basePrimaryAttributes.getIntelligence();
+        int health = totalPrimaryAttributes.getVitality() * 10;
+        int armorRating = totalPrimaryAttributes.getStrength() + totalPrimaryAttributes.getDexterity();
+        int elementalResistance = totalPrimaryAttributes.getIntelligence();
         this.secondaryAttributes = new SecondaryAttributes(health, armorRating, elementalResistance);
+    }
+
+    private void updateTotalAttributes() {
+        int strength = basePrimaryAttributes.getStrength();
+        int dexterity = basePrimaryAttributes.getDexterity();
+        int intelligence = basePrimaryAttributes.getIntelligence();
+        int vitality = basePrimaryAttributes.getVitality();
+
+        for(Item item : equipment.values()) {
+            if(item instanceof items.Armor) {
+                Armor armor = (Armor) item;
+                strength += armor.getPrimaryAttributes().getStrength();
+                dexterity += armor.getPrimaryAttributes().getDexterity();
+                intelligence += armor.getPrimaryAttributes().getIntelligence();
+                vitality += armor.getPrimaryAttributes().getVitality();
+            }
+        }
+
+        totalPrimaryAttributes.setStrength(strength);
+        totalPrimaryAttributes.setDexterity(dexterity);
+        totalPrimaryAttributes.setIntelligence(intelligence);
+        totalPrimaryAttributes.setVitality(vitality);
     }
 
     public String toString() {
         this.updateSecondaryAttributes();
+        this.updateTotalAttributes();
 
         StringBuilder result = new StringBuilder();
 
         result.append("Name: " + this.getName() + "\n");
         result.append("Level: " + this.getLevel() + "\n");
-        result.append("Strength: " + basePrimaryAttributes.getStrength() + "\n");
-        result.append("Dexterity: " + basePrimaryAttributes.getDexterity() + "\n");
-        result.append("Intelligence: " + basePrimaryAttributes.getIntelligence() + "\n");
-        result.append("Vitality: " + basePrimaryAttributes.getVitality() + "\n");
+        result.append("Strength: " + totalPrimaryAttributes.getStrength() + "\n");
+        result.append("Dexterity: " + totalPrimaryAttributes.getDexterity() + "\n");
+        result.append("Intelligence: " + totalPrimaryAttributes.getIntelligence() + "\n");
+        result.append("Vitality: " + totalPrimaryAttributes.getVitality() + "\n");
         result.append("Health: " + secondaryAttributes.getHealth() + "\n");
         result.append("Armor Rating: " + secondaryAttributes.getArmorRating() + "\n");
         result.append("Elemental Resistance: " + secondaryAttributes.getElementalResistance() + "\n");
