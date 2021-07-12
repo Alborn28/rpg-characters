@@ -2,9 +2,11 @@ package characters;
 
 import attributes.PrimaryAttributes;
 import attributes.SecondaryAttributes;
+import items.Armor;
 import items.Item;
 import items.ItemSlot;
 import items.Weapon;
+import items.exceptions.InvalidArmorException;
 import items.exceptions.InvalidWeaponException;
 
 import java.util.HashMap;
@@ -88,6 +90,8 @@ public abstract class Hero {
     }
 
     public abstract void equip(Weapon weapon) throws InvalidWeaponException;
+
+    public abstract void equip(Armor armor) throws InvalidArmorException;
 
     public String toString() {
         updateSecondaryAttributes();

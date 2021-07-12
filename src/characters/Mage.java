@@ -33,4 +33,22 @@ public class Mage extends Hero {
             throw new InvalidWeaponException("This weapon can't be equipped on this character!");
         }
     }
+
+    @Override
+    public void equip(Armor armor) throws InvalidArmorException {
+        if(armor.getArmorType() == ArmorType.CLOTH) {
+            if(armor.getRequiredLevel() <= this.getLevel()) {
+                HashMap<ItemSlot, Item> equipment = this.getEquipment();
+                equipment.put(armor.getSlot(), armor);
+            }
+
+            else {
+                throw new InvalidArmorException("Your character's level is not high enough to equip that piece of armor!");
+            }
+        }
+
+        else {
+            throw new InvalidArmorException("This type of armor can't be equipped on this character!");
+        }
+    }
 }

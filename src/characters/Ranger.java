@@ -36,6 +36,19 @@ public class Ranger extends Hero {
 
     @Override
     public void equip(Armor armor) throws InvalidArmorException {
+        if(armor.getArmorType() == ArmorType.LEATHER || armor.getArmorType() == ArmorType.MAIL) {
+            if(armor.getRequiredLevel() <= this.getLevel()) {
+                HashMap<ItemSlot, Item> equipment = this.getEquipment();
+                equipment.put(armor.getSlot(), armor);
+            }
 
+            else {
+                throw new InvalidArmorException("Your character's level is not high enough to equip that piece of armor!");
+            }
+        }
+
+        else {
+            throw new InvalidArmorException("This type of armor can't be equipped on this character!");
+        }
     }
 }
