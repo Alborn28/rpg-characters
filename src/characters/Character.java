@@ -13,7 +13,7 @@ public abstract class Character {
         this.name = name;
         level = 1;
 
-        this.primaryAttributes = new PrimaryAttributes(strength, dexterity, intelligence, vitality);
+        this.primaryAttributes = new PrimaryAttributes(strength, dexterity, vitality, intelligence);
 
         int health = vitality * 10;
         int armorRating = strength + dexterity;
@@ -46,6 +46,22 @@ public abstract class Character {
     }
 
     public abstract void levelUp();
+
+    protected void levelUpChar(int strength, int dexterity, int vitality, int intelligence) {
+        PrimaryAttributes primary = getPrimaryAttributes();
+
+        int currentStrength = primary.getStrength();
+        int currentDexterity = primary.getDexterity();
+        int currentIntelligence = primary.getIntelligence();
+        int currentVitality = primary.getVitality();
+
+        primary.setStrength(currentStrength += strength);
+        primary.setDexterity(currentDexterity += dexterity);
+        primary.setVitality(currentVitality += vitality);
+        primary.setIntelligence(currentIntelligence += intelligence);
+
+        level++;
+    }
 
     private void updateSecondaryAttributes() {
         int health = primaryAttributes.getVitality() * 10;

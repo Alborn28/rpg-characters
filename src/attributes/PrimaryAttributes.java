@@ -3,14 +3,14 @@ package attributes;
 public class PrimaryAttributes {
     private int strength;
     private int dexterity;
-    private int intelligence;
     private int vitality;
+    private int intelligence;
 
-    public PrimaryAttributes(int strength, int dexterity, int intelligence, int vitality) {
+    public PrimaryAttributes(int strength, int dexterity, int vitality, int intelligence) {
         this.strength = strength;
         this.dexterity = dexterity;
-        this.intelligence = intelligence;
         this.vitality = vitality;
+        this.intelligence = intelligence;
     }
 
     public int getStrength() {
