@@ -7,6 +7,6 @@ public class Rogue extends Hero {
 
     @Override
     public void levelUp() {
-        levelUpChar(1, 4, 3, 1);
+        levelUpHero(1, 4, 3, 1);
     }
 }

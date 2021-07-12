@@ -7,6 +7,6 @@ public class Mage extends Hero {
 
     @Override
     public void levelUp() {
-        levelUpChar(1, 1, 3, 5);
+        levelUpHero(1, 1, 3, 5);
     }
 }

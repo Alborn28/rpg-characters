@@ -47,7 +47,7 @@ public abstract class Hero {
 
     public abstract void levelUp();
 
-    protected void levelUpChar(int strength, int dexterity, int vitality, int intelligence) {
+    protected void levelUpHero(int strength, int dexterity, int vitality, int intelligence) {
         PrimaryAttributes primary = getPrimaryAttributes();
 
         int currentStrength = primary.getStrength();
@@ -75,8 +75,8 @@ public abstract class Hero {
 
         StringBuilder result = new StringBuilder();
 
-        result.append("Name: " + name + "\n");
-        result.append("Level: " + level + "\n");
+        result.append("Name: " + getName() + "\n");
+        result.append("Level: " + getLevel() + "\n");
         result.append("Strength: " + primaryAttributes.getStrength() + "\n");
         result.append("Dexterity: " + primaryAttributes.getDexterity() + "\n");
         result.append("Intelligence: " + primaryAttributes.getIntelligence() + "\n");
