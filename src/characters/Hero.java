@@ -69,7 +69,7 @@ public abstract class Hero {
 
     public abstract void levelUp(int level);
 
-    protected void levelUpHero(int strength, int dexterity, int vitality, int intelligence) {
+    protected void levelUpHero(int level, int strength, int dexterity, int vitality, int intelligence) {
         int currentStrength = basePrimaryAttributes.getStrength();
         int currentDexterity = basePrimaryAttributes.getDexterity();
         int currentIntelligence = basePrimaryAttributes.getIntelligence();
@@ -80,7 +80,7 @@ public abstract class Hero {
         basePrimaryAttributes.setVitality(currentVitality += vitality);
         basePrimaryAttributes.setIntelligence(currentIntelligence += intelligence);
 
-        level++;
+        this.level += level;
 
         this.updateSecondaryAttributes();
         this.updateTotalAttributes();

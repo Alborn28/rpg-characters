@@ -6,13 +6,13 @@ import items.exceptions.InvalidWeaponException;
 
 public class Mage extends Hero {
     public Mage(String name) {
-        super(name, 1, 1, 5 ,8);
+        super(name,1,1,5 ,8);
     }
 
     @Override
     public void levelUp(int level) {
         if(level > 0) {
-            levelUpHero(1 * level, 1 * level, 3 * level, 5 * level);
+            levelUpHero(level,1 * level,1 * level,3 * level,5 * level);
         }
 
         else {
