@@ -1,9 +1,7 @@
 package characters;
 
-import items.Item;
-import items.ItemSlot;
-import items.Weapon;
-import items.WeaponType;
+import items.*;
+import items.exceptions.InvalidArmorException;
 import items.exceptions.InvalidWeaponException;
 
 import java.util.HashMap;
@@ -21,12 +19,23 @@ public class Ranger extends Hero {
     @Override
     public void equip(Weapon weapon) throws InvalidWeaponException {
         if(weapon.getWeaponType() == WeaponType.BOW) {
-            HashMap<ItemSlot, Item> equipment = super.getEquipment();
-            equipment.put(weapon.getSlot(), weapon);
+            if(weapon.getRequiredLevel() <= this.getLevel()) {
+                HashMap<ItemSlot, Item> equipment = this.getEquipment();
+                equipment.put(weapon.getSlot(), weapon);
+            }
+
+            else {
+                throw new InvalidWeaponException("Your character's level is not high enough to equip that weapon!");
+            }
         }
 
         else {
             throw new InvalidWeaponException("This weapon can't be equipped on this character!");
         }
+    }
+
+    @Override
+    public void equip(Armor armor) throws InvalidArmorException {
+
     }
 }
