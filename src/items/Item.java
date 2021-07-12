@@ -34,4 +34,14 @@ public abstract class Item {
     public void setSlot(ItemSlot slot) {
         this.slot = slot;
     }
+
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        result.append("Name: " + getName() + "\n");
+        result.append("Required level: " + getRequiredLevel() + "\n");
+        result.append("Slot: " + getSlot().name() + "\n");
+
+        return result.toString();
+    }
 }

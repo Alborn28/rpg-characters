@@ -36,4 +36,21 @@ public class Weapon extends Item {
     public void setAttackSpeed(double attackSpeed) {
         this.attackSpeed = attackSpeed;
     }
+
+    public double getDPS() {
+        return damage * attackSpeed;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        result.append(super.toString());
+        result.append("Weapon type: " + getWeaponType() + "\n");
+        result.append("Damage: " + getDamage() + "\n");
+        result.append("Attack speed: " + getAttackSpeed() + "\n");
+        result.append("DPS: " + getDPS() + "\n");
+
+        return result.toString();
+    }
 }
