@@ -1,13 +1,14 @@
-import characters.Mage;
+import characters.*;
+import characters.Hero;
 
 public class Program {
     public static void main(String[] args) {
-        Mage mage = new Mage("Max");
+        Hero hero = new Warrior("Max");
 
-        System.out.println(mage.toString());
+        System.out.println(hero.toString());
 
-        mage.levelUp();
+        hero.levelUp();
 
-        System.out.println(mage.toString());
+        System.out.println(hero.toString());
     }
 }

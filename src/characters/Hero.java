@@ -3,13 +3,13 @@ package characters;
 import attributes.PrimaryAttributes;
 import attributes.SecondaryAttributes;
 
-public abstract class Character {
+public abstract class Hero {
     private String name;
     private int level;
     private PrimaryAttributes primaryAttributes;
     private SecondaryAttributes secondaryAttributes;
 
-    public Character(String name, int strength, int dexterity, int vitality, int intelligence) {
+    public Hero(String name, int strength, int dexterity, int vitality, int intelligence) {
         this.name = name;
         level = 1;
 

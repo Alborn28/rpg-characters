@@ -1,6 +1,6 @@
 package characters;
 
-public class Ranger extends Character {
+public class Ranger extends Hero {
     public Ranger(String name) {
         super(name, 1, 7, 8 ,1);
     }

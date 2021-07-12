@@ -1,6 +1,6 @@
 package characters;
 
-public class Mage extends Character {
+public class Mage extends Hero {
     public Mage(String name) {
         super(name, 1, 1, 5 ,8);
     }
