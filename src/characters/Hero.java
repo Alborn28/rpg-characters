@@ -67,7 +67,7 @@ public abstract class Hero {
         return totalPrimaryAttributes;
     }
 
-    public abstract void levelUp();
+    public abstract void levelUp(int level);
 
     protected void levelUpHero(int strength, int dexterity, int vitality, int intelligence) {
         int currentStrength = basePrimaryAttributes.getStrength();
@@ -86,11 +86,11 @@ public abstract class Hero {
         this.updateTotalAttributes();
     }
 
-    public abstract void equip(Weapon weapon) throws InvalidWeaponException;
+    public abstract boolean equip(Weapon weapon) throws InvalidWeaponException;
 
-    public abstract void equip(Armor armor) throws InvalidArmorException;
+    public abstract boolean equip(Armor armor) throws InvalidArmorException;
 
-    protected void equipHero(Weapon weapon) throws InvalidWeaponException {
+    protected boolean equipHero(Weapon weapon) throws InvalidWeaponException {
         if(weapon.getRequiredLevel() <= this.getLevel()) {
             if(weapon.getSlot() == ItemSlot.WEAPON) {
                 HashMap<ItemSlot, Item> equipment = this.getEquipment();
@@ -98,6 +98,8 @@ public abstract class Hero {
 
                 this.updateSecondaryAttributes();
                 this.updateTotalAttributes();
+
+                return true;
             }
 
             else {
@@ -110,7 +112,7 @@ public abstract class Hero {
         }
     }
 
-    protected void equipHero(Armor armor) throws InvalidArmorException {
+    protected boolean equipHero(Armor armor) throws InvalidArmorException {
         if(armor.getRequiredLevel() <= this.getLevel()) {
             if(armor.getSlot() != ItemSlot.WEAPON) {
                 HashMap<ItemSlot, Item> equipment = this.getEquipment();
@@ -118,6 +120,8 @@ public abstract class Hero {
 
                 this.updateSecondaryAttributes();
                 this.updateTotalAttributes();
+
+                return true;
             }
 
             else {

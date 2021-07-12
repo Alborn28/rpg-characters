@@ -10,14 +10,20 @@ public class Ranger extends Hero {
     }
 
     @Override
-    public void levelUp() {
-        levelUpHero(1, 5, 2, 1);
+    public void levelUp(int level) {
+        if(level > 0) {
+            levelUpHero(1 * level, 5 * level, 2 * level, 1 * level);
+        }
+
+        else {
+            throw new IllegalArgumentException("A character must gain 1 or more levels!");
+        }
     }
 
     @Override
-    public void equip(Weapon weapon) throws InvalidWeaponException {
+    public boolean equip(Weapon weapon) throws InvalidWeaponException {
         if(weapon.getWeaponType() == WeaponType.BOW) {
-            super.equipHero(weapon);
+            return super.equipHero(weapon);
         }
 
         else {
@@ -26,9 +32,9 @@ public class Ranger extends Hero {
     }
 
     @Override
-    public void equip(Armor armor) throws InvalidArmorException {
+    public boolean equip(Armor armor) throws InvalidArmorException {
         if(armor.getArmorType() == ArmorType.LEATHER || armor.getArmorType() == ArmorType.MAIL) {
-            super.equipHero(armor);
+            return super.equipHero(armor);
         }
 
         else {

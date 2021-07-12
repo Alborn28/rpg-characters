@@ -10,14 +10,20 @@ public class Mage extends Hero {
     }
 
     @Override
-    public void levelUp() {
-        levelUpHero(1, 1, 3, 5);
+    public void levelUp(int level) {
+        if(level > 0) {
+            levelUpHero(1 * level, 1 * level, 3 * level, 5 * level);
+        }
+
+        else {
+            throw new IllegalArgumentException("A character must gain 1 or more levels!");
+        }
     }
 
     @Override
-    public void equip(Weapon weapon) throws InvalidWeaponException {
+    public boolean equip(Weapon weapon) throws InvalidWeaponException {
         if(weapon.getWeaponType() == WeaponType.STAFF || weapon.getWeaponType() == WeaponType.WAND) {
-            super.equipHero(weapon);
+            return super.equipHero(weapon);
         }
 
         else {
@@ -26,9 +32,9 @@ public class Mage extends Hero {
     }
 
     @Override
-    public void equip(Armor armor) throws InvalidArmorException {
+    public boolean equip(Armor armor) throws InvalidArmorException {
         if(armor.getArmorType() == ArmorType.CLOTH) {
-            super.equipHero(armor);
+            return super.equipHero(armor);
         }
 
         else {
