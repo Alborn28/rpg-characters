@@ -1,6 +1,8 @@
 package characters;
 
 import items.*;
+import items.enumerations.ArmorType;
+import items.enumerations.WeaponType;
 import items.exceptions.InvalidArmorException;
 import items.exceptions.InvalidWeaponException;
 

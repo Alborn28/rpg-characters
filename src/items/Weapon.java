@@ -1,5 +1,8 @@
 package items;
 
+import items.enumerations.ItemSlot;
+import items.enumerations.WeaponType;
+
 public class Weapon extends Item {
     WeaponType weaponType;
     int damage;

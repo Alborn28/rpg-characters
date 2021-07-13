@@ -1,6 +1,8 @@
 package items;
 
 import attributes.PrimaryAttributes;
+import items.enumerations.ArmorType;
+import items.enumerations.ItemSlot;
 
 public class Armor extends Item {
     ArmorType armorType;

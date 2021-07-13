@@ -1,5 +1,7 @@
 package items;
 
+import items.enumerations.ItemSlot;
+
 public abstract class Item {
     private String name;
     private int requiredLevel;

@@ -3,6 +3,7 @@ package characters;
 import attributes.PrimaryAttributes;
 import attributes.SecondaryAttributes;
 import items.*;
+import items.enumerations.ItemSlot;
 import items.exceptions.InvalidArmorException;
 import items.exceptions.InvalidWeaponException;
 
