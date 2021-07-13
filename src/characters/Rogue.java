@@ -41,4 +41,9 @@ public class Rogue extends Hero {
             throw new InvalidArmorException("This type of armor can't be equipped on this character!");
         }
     }
+
+    @Override
+    public double getDamage() {
+        return getDamageHero(getTotalPrimaryAttributes().getDexterity());
+    }
 }
