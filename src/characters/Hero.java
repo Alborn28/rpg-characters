@@ -134,6 +134,8 @@ public abstract class Hero {
         }
     }
 
+    public abstract double getDamage();
+
     private void updateSecondaryAttributes() {
         int health = totalPrimaryAttributes.getVitality() * 10;
         int armorRating = totalPrimaryAttributes.getStrength() + totalPrimaryAttributes.getDexterity();
