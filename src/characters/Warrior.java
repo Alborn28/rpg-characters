@@ -45,7 +45,7 @@ public class Warrior extends Hero {
     }
 
     @Override
-    public double getDamage() {
-        return getDamageHero(getTotalPrimaryAttributes().getStrength());
+    public double getDPS() {
+        return getDPSHero(getTotalPrimaryAttributes().getStrength());
     }
 }

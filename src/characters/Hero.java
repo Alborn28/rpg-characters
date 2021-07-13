@@ -52,7 +52,13 @@ public abstract class Hero {
         return basePrimaryAttributes;
     }
 
+    public PrimaryAttributes getTotalPrimaryAttributes() {
+        this.updateTotalAttributes();
+        return totalPrimaryAttributes;
+    }
+
     public SecondaryAttributes getSecondaryAttributes() {
+        this.updateSecondaryAttributes();
         return secondaryAttributes;
     }
 
@@ -62,10 +68,6 @@ public abstract class Hero {
 
     public void setEquipment(HashMap<ItemSlot, Item> equipment) {
         this.equipment = equipment;
-    }
-
-    public PrimaryAttributes getTotalPrimaryAttributes() {
-        return totalPrimaryAttributes;
     }
 
     public abstract void levelUp(int level);
@@ -131,19 +133,19 @@ public abstract class Hero {
         }
     }
 
-    public abstract double getDamage();
+    public abstract double getDPS();
 
-    protected double getDamageHero(int primaryAttribute) {
+    protected double getDPSHero(int primaryAttribute) {
         if(this.getEquipment().get(ItemSlot.WEAPON) != null) {
             Weapon weapon = (Weapon) this.getEquipment().get(ItemSlot.WEAPON);
             double weaponDPS = weapon.getDPS();
             double result = weaponDPS * (1 + ((double) primaryAttribute / 100));
-            result = (double) Math.round(result * 10) / 10;
+            result = (double) Math.round(result * 100) / 100;
             return result;
         }
 
         double result = 1 * (1 + ((double) primaryAttribute / 100));
-        result = (double) Math.round(result * 10) / 10;
+        result = (double) Math.round(result * 100) / 100;
         return result;
     }
 
@@ -183,7 +185,7 @@ public abstract class Hero {
         result.append("Level: " + this.getLevel() + "\n");
         result.append(totalPrimaryAttributes.toString());
         result.append(secondaryAttributes.toString());
-        result.append("DPS: " + this.getDamage() + "\n");
+        result.append("DPS: " + this.getDPS() + "\n");
 
         return result.toString();
     }
