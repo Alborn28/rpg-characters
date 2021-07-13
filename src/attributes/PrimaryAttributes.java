@@ -55,4 +55,23 @@ public class PrimaryAttributes {
 
         return result.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof PrimaryAttributes) {
+            PrimaryAttributes attributes = (PrimaryAttributes) o;
+
+            if(this.getStrength() == attributes.getStrength() && this.getDexterity() == attributes.getDexterity() && this.getVitality() == attributes.getVitality() && this.getIntelligence() == attributes.getIntelligence()) {
+                return true;
+            }
+
+            else {
+                return false;
+            }
+        }
+
+        else {
+            return false;
+        }
+    }
 }
