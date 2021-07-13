@@ -23,7 +23,7 @@ public class Warrior extends Hero {
     @Override
     public boolean equip(Weapon weapon) throws InvalidWeaponException {
         if(weapon.getWeaponType() == WeaponType.AXE || weapon.getWeaponType() == WeaponType.HAMMER || weapon.getWeaponType() == WeaponType.SWORD) {
-            return super.equipHero(weapon);
+            return super.equip(weapon);
         }
 
         else {
@@ -34,7 +34,7 @@ public class Warrior extends Hero {
     @Override
     public boolean equip(Armor armor) throws InvalidArmorException {
         if(armor.getArmorType() == ArmorType.MAIL || armor.getArmorType() == ArmorType.PLATE) {
-            return super.equipHero(armor);
+            return super.equip(armor);
         }
 
         else {

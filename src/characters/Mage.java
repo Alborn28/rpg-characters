@@ -23,7 +23,7 @@ public class Mage extends Hero {
     @Override
     public boolean equip(Weapon weapon) throws InvalidWeaponException {
         if(weapon.getWeaponType() == WeaponType.STAFF || weapon.getWeaponType() == WeaponType.WAND) {
-            return super.equipHero(weapon);
+            return super.equip(weapon);
         }
 
         else {
@@ -34,7 +34,7 @@ public class Mage extends Hero {
     @Override
     public boolean equip(Armor armor) throws InvalidArmorException {
         if(armor.getArmorType() == ArmorType.CLOTH) {
-            return super.equipHero(armor);
+            return super.equip(armor);
         }
 
         else {

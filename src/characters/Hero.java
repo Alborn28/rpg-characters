@@ -86,11 +86,7 @@ public abstract class Hero {
         this.updateTotalAttributes();
     }
 
-    public abstract boolean equip(Weapon weapon) throws InvalidWeaponException;
-
-    public abstract boolean equip(Armor armor) throws InvalidArmorException;
-
-    protected boolean equipHero(Weapon weapon) throws InvalidWeaponException {
+    public boolean equip(Weapon weapon) throws InvalidWeaponException {
         if(weapon.getRequiredLevel() <= this.getLevel()) {
             if(weapon.getSlot() == ItemSlot.WEAPON) {
                 HashMap<ItemSlot, Item> equipment = this.getEquipment();
@@ -112,7 +108,7 @@ public abstract class Hero {
         }
     }
 
-    protected boolean equipHero(Armor armor) throws InvalidArmorException {
+    public boolean equip(Armor armor) throws InvalidArmorException {
         if(armor.getRequiredLevel() <= this.getLevel()) {
             if(armor.getSlot() != ItemSlot.WEAPON) {
                 HashMap<ItemSlot, Item> equipment = this.getEquipment();
