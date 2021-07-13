@@ -45,4 +45,23 @@ public class SecondaryAttributes {
 
         return result.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof SecondaryAttributes) {
+            SecondaryAttributes attributes = (SecondaryAttributes) o;
+
+            if(this.getHealth() == attributes.getHealth() && this.getArmorRating() == attributes.getArmorRating() && this.getElementalResistance() == attributes.getElementalResistance()) {
+                return true;
+            }
+
+            else {
+                return false;
+            }
+        }
+
+        else {
+            return false;
+        }
+    }
 }
