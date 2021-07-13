@@ -136,6 +136,22 @@ public abstract class Hero {
 
     public abstract double getDamage();
 
+    protected double getDamageHero(int primaryAttribute) {
+        for( Item item : getEquipment().values()) {
+            if(item instanceof Weapon) {
+                Weapon weapon = (Weapon) item;
+                double weaponDPS = weapon.getDPS();
+                double result = weaponDPS * (1 + ((double) primaryAttribute / 100));
+                result = (double) Math.round(result * 10) / 10;
+                return result;
+            }
+        }
+
+        double result = 1 * (1 + ((double) primaryAttribute / 100));
+        result = (double) Math.round(result * 10) / 10;
+        return result;
+    }
+
     private void updateSecondaryAttributes() {
         int health = totalPrimaryAttributes.getVitality() * 10;
         int armorRating = totalPrimaryAttributes.getStrength() + totalPrimaryAttributes.getDexterity();

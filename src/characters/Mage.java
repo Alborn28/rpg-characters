@@ -44,18 +44,6 @@ public class Mage extends Hero {
 
     @Override
     public double getDamage() {
-        for( Item item : getEquipment().values()) {
-            if(item instanceof Weapon) {
-                Weapon weapon = (Weapon) item;
-                double weaponDPS = weapon.getDPS();
-                double result = weaponDPS * (1 + ((double) getTotalPrimaryAttributes().getIntelligence() / 100));
-                result = (double) Math.round(result * 10) / 10;
-                return result;
-            }
-        }
-
-        double result = 1 * (1 + ((double) getTotalPrimaryAttributes().getIntelligence() / 100));
-        result = (double) Math.round(result * 10) / 10;
-        return result;
+        return getDamageHero(getTotalPrimaryAttributes().getIntelligence());
     }
 }
