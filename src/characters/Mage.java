@@ -45,7 +45,7 @@ public class Mage extends Hero {
     }
 
     @Override
-    public double getDamage() {
-        return getDamageHero(getTotalPrimaryAttributes().getIntelligence());
+    public double getDPS() {
+        return getDPSHero(getTotalPrimaryAttributes().getIntelligence());
     }
 }

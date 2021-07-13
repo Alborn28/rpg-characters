@@ -45,7 +45,7 @@ public class Ranger extends Hero {
     }
 
     @Override
-    public double getDamage() {
-        return getDamageHero(getTotalPrimaryAttributes().getDexterity());
+    public double getDPS() {
+        return getDPSHero(getTotalPrimaryAttributes().getDexterity());
     }
 }
