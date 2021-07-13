@@ -186,6 +186,7 @@ public abstract class Hero {
         result.append("Level: " + this.getLevel() + "\n");
         result.append(totalPrimaryAttributes.toString());
         result.append(secondaryAttributes.toString());
+        result.append("DPS: " + this.getDamage() + "\n");
 
         return result.toString();
     }
