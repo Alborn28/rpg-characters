@@ -1,9 +1,9 @@
-package characters;
-
 import attributes.PrimaryAttributes;
 import attributes.SecondaryAttributes;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
+import characters.Mage;
+import characters.Ranger;
+import characters.Rogue;
+import characters.Warrior;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
