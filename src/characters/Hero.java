@@ -176,15 +176,12 @@ public abstract class Hero {
     }
 
     public String toString() {
-        this.updateSecondaryAttributes();
-        this.updateTotalAttributes();
-
         StringBuilder result = new StringBuilder();
 
         result.append("Name: " + this.getName() + "\n");
         result.append("Level: " + this.getLevel() + "\n");
-        result.append(totalPrimaryAttributes.toString());
-        result.append(secondaryAttributes.toString());
+        result.append(this.getTotalPrimaryAttributes().toString());
+        result.append(this.getSecondaryAttributes().toString());
         result.append("DPS: " + this.getDPS() + "\n");
 
         return result.toString();
