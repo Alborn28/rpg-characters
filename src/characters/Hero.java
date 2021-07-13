@@ -18,6 +18,10 @@ public abstract class Hero {
     private HashMap<ItemSlot, Item> equipment;
 
     public Hero(String name, int strength, int dexterity, int vitality, int intelligence) {
+        if(name == null) {
+            throw new IllegalArgumentException("Name can't be null!");
+        }
+
         this.name = name;
         level = 1;
 
