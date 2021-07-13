@@ -52,7 +52,13 @@ public abstract class Hero {
         return basePrimaryAttributes;
     }
 
+    public PrimaryAttributes getTotalPrimaryAttributes() {
+        this.updateTotalAttributes();
+        return totalPrimaryAttributes;
+    }
+
     public SecondaryAttributes getSecondaryAttributes() {
+        this.updateSecondaryAttributes();
         return secondaryAttributes;
     }
 
@@ -62,10 +68,6 @@ public abstract class Hero {
 
     public void setEquipment(HashMap<ItemSlot, Item> equipment) {
         this.equipment = equipment;
-    }
-
-    public PrimaryAttributes getTotalPrimaryAttributes() {
-        return totalPrimaryAttributes;
     }
 
     public abstract void levelUp(int level);
