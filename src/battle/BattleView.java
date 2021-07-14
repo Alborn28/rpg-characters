@@ -8,9 +8,12 @@ public class BattleView {
         System.out.println(winner.getName() + " killed " + loser.getName());
     }
     protected static void printResult(Hero winner, Hero loser, int seconds) {
-        System.out.println(winner.getName() + " killed " + loser.getName() + " after " + seconds + " seconds.");
+        System.out.println("\n" + winner.getName() + " killed " + loser.getName() + " after " + seconds + " seconds.");
     }
 
+    /*
+     * Print the fighter's names and their corresponding health.
+     */
     protected static void printStatus(Hero fighter1, Hero fighter2, int health1, int health2) {
         System.out.println();
         System.out.println("------------------------------");

@@ -11,26 +11,37 @@ public class BattleCalculations {
         return result;
     }
 
-    protected static int calcDamage(Hero attacker, Hero defender) {
+    /*
+     * A method to calculate how much damage an attacker does to a defender each second.
+     *
+     * To note is that the defensive stats are multiplied by the attacker's attack speed.
+     * This is so that the defensive stats are applied to every hit by the attacker.
+     */
+    protected static int calcDamagePerSecond(Hero attacker, Hero defender) {
         int damage;
         double attackSpeed = 1;
+        double defence;
+
+        //If the attacker has a weapon, that weapon's attack speed is used. Otherwise, the attack speed is set to 1.
         if(attacker.getEquipment().get(ItemSlot.WEAPON) != null) {
             Weapon weapon = (Weapon) attacker.getEquipment().get(ItemSlot.WEAPON);
             attackSpeed = weapon.getAttackSpeed();
         }
 
+        //If the attacker is a mage, he deals magic damage thus elemental resistance is the defensive stat used.
         if(attacker instanceof Mage) {
-            double defence = defender.getSecondaryAttributes().getElementalResistance() * attackSpeed;
-            damage = (int) Math.round(attacker.getDPS() - defence);
+            defence = defender.getSecondaryAttributes().getElementalResistance() * attackSpeed;
         }
 
+        //If the attacker is not a mage, he deals physical damage so armor rating is what decreases the damage.
         else {
-            double defence = defender.getSecondaryAttributes().getArmorRating() * attackSpeed;
-            damage = (int) Math.round(attacker.getDPS() - defence);
+            defence = defender.getSecondaryAttributes().getArmorRating() * attackSpeed;
         }
 
+        damage = (int) Math.round(attacker.getDPS() - defence);
+
+        //If the attacker dealt any damage, return it. If damage is negative, return 0.
         if(damage > 0) {
-            System.out.println(attacker.getName() + " did " + damage + " damage to " + defender.getName());
             return damage;
         }
 
