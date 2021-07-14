@@ -11,6 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class CharacterTest {
 
     @Test
+    void TestCreateCharacter_NullInput_ShouldThrowException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Warrior warrior = new Warrior(null);
+        });
+    }
+
+    @Test
     void TestCreateCharacter_ValidInput_ShouldBeLevelOne() {
         Warrior warrior = new Warrior("Max");
         int level = warrior.getLevel();
