@@ -57,7 +57,6 @@ public abstract class Hero {
     }
 
     public PrimaryAttributes getTotalPrimaryAttributes() {
-        this.updateTotalAttributes();
         return totalPrimaryAttributes;
     }
 
@@ -70,12 +69,11 @@ public abstract class Hero {
         return equipment;
     }
 
-    public void setEquipment(HashMap<ItemSlot, Item> equipment) {
-        this.equipment = equipment;
-    }
-
     public abstract void levelUp(int level);
 
+    /*
+     *  Help-method used for levelling up the character. The sub-class inputs how much the level should be increased, and how much each attribute should increase.
+     */
     protected void levelUpHero(int level, int strength, int dexterity, int vitality, int intelligence) {
         int currentStrength = basePrimaryAttributes.getStrength();
         int currentDexterity = basePrimaryAttributes.getDexterity();
@@ -89,18 +87,17 @@ public abstract class Hero {
 
         this.level += level;
 
-        this.updateSecondaryAttributes();
         this.updateTotalAttributes();
     }
 
+    /*
+     * Method to equip a weapon. First it checks if the character's level is high enough for the weapon, then if the weapon has the correct ItemSlot.
+     * If both those requirements are fulfilled, the weapon is equipped.
+     */
     public boolean equip(Weapon weapon) throws InvalidWeaponException {
         if(weapon.getRequiredLevel() <= this.getLevel()) {
             if(weapon.getSlot() == ItemSlot.WEAPON) {
-                HashMap<ItemSlot, Item> equipment = this.getEquipment();
-                equipment.put(weapon.getSlot(), weapon);
-
-                this.updateSecondaryAttributes();
-                this.updateTotalAttributes();
+                this.equipment.put(weapon.getSlot(), weapon);
 
                 return true;
             }
@@ -115,13 +112,15 @@ public abstract class Hero {
         }
     }
 
+    /*
+     * Method to equip a weapon. First it checks if the character's level is high enough for the armor, then if the armor has a valid ItemSlot.
+     * If both those requirements are fulfilled, the weapon is equipped and the total attributes are updated with the new armor.
+     */
     public boolean equip(Armor armor) throws InvalidArmorException {
         if(armor.getRequiredLevel() <= this.getLevel()) {
             if(armor.getSlot() != ItemSlot.WEAPON) {
-                HashMap<ItemSlot, Item> equipment = this.getEquipment();
-                equipment.put(armor.getSlot(), armor);
+                this.equipment.put(armor.getSlot(), armor);
 
-                this.updateSecondaryAttributes();
                 this.updateTotalAttributes();
 
                 return true;
@@ -139,6 +138,9 @@ public abstract class Hero {
 
     public abstract double getDPS();
 
+    /*
+     *  Help-method used for calculating the DPS. The sub-class inputs the value of their primary attribute. Strength for warrior, intelligence for mage etc.
+     */
     protected double getDPSHero(int primaryAttribute) {
         if(this.getEquipment().get(ItemSlot.WEAPON) != null) {
             Weapon weapon = (Weapon) this.getEquipment().get(ItemSlot.WEAPON);
@@ -160,6 +162,9 @@ public abstract class Hero {
         this.secondaryAttributes = new SecondaryAttributes(health, armorRating, elementalResistance);
     }
 
+    /*
+     * Method to calculate and update total attributes. It adds the base attributes + the bonus attributes from all equipped armor.
+     */
     private void updateTotalAttributes() {
         int strength = basePrimaryAttributes.getStrength();
         int dexterity = basePrimaryAttributes.getDexterity();
@@ -184,9 +189,9 @@ public abstract class Hero {
 
         result.append("Name: " + this.getName() + "\n");
         result.append("Level: " + this.getLevel() + "\n");
-        result.append(this.getTotalPrimaryAttributes().toString());
-        result.append(this.getSecondaryAttributes().toString());
-        result.append("DPS: " + this.getDPS() + "\n");
+        result.append(this.getTotalPrimaryAttributes().toString() + "\n");
+        result.append(this.getSecondaryAttributes().toString() + "\n");
+        result.append("DPS: " + this.getDPS());
 
         return result.toString();
     }

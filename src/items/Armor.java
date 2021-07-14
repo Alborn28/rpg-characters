@@ -34,7 +34,7 @@ public class Armor extends Item {
     public String toString() {
         StringBuilder result = new StringBuilder();
 
-        result.append(super.toString());
+        result.append(super.toString() + "\n");
         result.append("Armor type: " + armorType.name() + "\n");
         result.append(this.primaryAttributes.toString());
 

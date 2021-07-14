@@ -42,7 +42,7 @@ public abstract class Item {
 
         result.append("Name: " + getName() + "\n");
         result.append("Required level: " + getRequiredLevel() + "\n");
-        result.append("Slot: " + getSlot().name() + "\n");
+        result.append("Slot: " + getSlot().name());
 
         return result.toString();
     }

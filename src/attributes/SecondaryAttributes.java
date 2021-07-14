@@ -41,11 +41,15 @@ public class SecondaryAttributes {
 
         result.append("Health: " + this.getHealth() + "\n");
         result.append("Armor rating: " + this.getArmorRating() + "\n");
-        result.append("Elemental resistance: " + this.getElementalResistance() + "\n");
+        result.append("Elemental resistance: " + this.getElementalResistance());
 
         return result.toString();
     }
 
+    /*
+     *  Method used to compare SecondaryAttributes-objects and check if they are equal. Used in the unit tests.
+     *  If both objects are SecondaryAttributes-objects and all properties are equal, the objects are considered equal.
+     */
     @Override
     public boolean equals(Object o) {
         if(o instanceof SecondaryAttributes) {

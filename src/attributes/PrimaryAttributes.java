@@ -51,17 +51,21 @@ public class PrimaryAttributes {
         result.append("Strength: " + this.getStrength() + "\n");
         result.append("Dexterity: " + this.getDexterity() + "\n");
         result.append("Vitality: " + this.getVitality() + "\n");
-        result.append("Intelligence: " + this.getIntelligence() + "\n");
+        result.append("Intelligence: " + this.getIntelligence());
 
         return result.toString();
     }
 
+    /*
+     *  Method used to compare PrimaryAttribute-objects and check if they are equal. Used in the unit tests.
+     *  If both objects are PrimaryAttributes-objects and all properties are equal, the objects are considered equal.
+     */
     @Override
     public boolean equals(Object o) {
         if(o instanceof PrimaryAttributes) {
             PrimaryAttributes attributes = (PrimaryAttributes) o;
 
-            if(this.getStrength() == attributes.getStrength() && this.getDexterity() == attributes.getDexterity() && this.getVitality() == attributes.getVitality() && this.getIntelligence() == attributes.getIntelligence()) {
+            if((this.getStrength() == attributes.getStrength()) && (this.getDexterity() == attributes.getDexterity()) && (this.getVitality() == attributes.getVitality()) && (this.getIntelligence() == attributes.getIntelligence())) {
                 return true;
             }
 
