@@ -48,11 +48,11 @@ public class Weapon extends Item {
     public String toString() {
         StringBuilder result = new StringBuilder();
 
-        result.append(super.toString());
+        result.append(super.toString() + "\n");
         result.append("Weapon type: " + getWeaponType() + "\n");
         result.append("Damage: " + getDamage() + "\n");
         result.append("Attack speed: " + getAttackSpeed() + "\n");
-        result.append("DPS: " + getDPS() + "\n");
+        result.append("DPS: " + getDPS());
 
         return result.toString();
     }
