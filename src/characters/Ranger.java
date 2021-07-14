@@ -6,7 +6,7 @@ import items.enumerations.WeaponType;
 import items.exceptions.InvalidArmorException;
 import items.exceptions.InvalidWeaponException;
 
-public class Ranger extends Hero {
+public class Ranger extends Character {
     public Ranger(String name) {
         super(name,1,7,8 ,1);
     }

@@ -1,23 +1,23 @@
 package battle;
 
-import characters.Hero;
+import characters.Character;
 
 public class Battle {
-    private Hero fighter1;
-    private Hero fighter2;
+    private Character fighter1;
+    private Character fighter2;
 
     public Battle() {}
 
-    public Battle(Hero fighter1, Hero fighter2) {
+    public Battle(Character fighter1, Character fighter2) {
         this.fighter1 = fighter1;
         this.fighter2 = fighter2;
     }
 
-    public void setFighter1(Hero fighter1) {
+    public void setFighter1(Character fighter1) {
         this.fighter1 = fighter1;
     }
 
-    public void setFighter2(Hero fighter2) {
+    public void setFighter2(Character fighter2) {
         this.fighter2 = fighter2;
     }
 

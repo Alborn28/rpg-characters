@@ -1,12 +1,12 @@
 package battle;
 
-import characters.Hero;
+import characters.Character;
 import characters.Mage;
 import items.Weapon;
 import items.enumerations.ItemSlot;
 
 public class BattleCalculations {
-    protected static double timeToKillFighter(Hero defender, Hero attacker) {
+    protected static double timeToKillFighter(Character defender, Character attacker) {
         double result = (double) defender.getSecondaryAttributes().getHealth() / attacker.getDPS();
         return result;
     }
@@ -17,7 +17,7 @@ public class BattleCalculations {
      * To note is that the defensive stats are multiplied by the attacker's attack speed.
      * This is so that the defensive stats are applied to every hit by the attacker.
      */
-    protected static int calcDamagePerSecond(Hero attacker, Hero defender) {
+    protected static int calcDamagePerSecond(Character attacker, Character defender) {
         int damage;
         double attackSpeed = 1;
         double defence;

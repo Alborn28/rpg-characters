@@ -9,7 +9,7 @@ import items.exceptions.InvalidWeaponException;
 
 import java.util.HashMap;
 
-public abstract class Hero {
+public abstract class Character {
     private String name;
     private int level;
     private PrimaryAttributes basePrimaryAttributes;
@@ -17,7 +17,7 @@ public abstract class Hero {
     private SecondaryAttributes secondaryAttributes;
     private HashMap<ItemSlot, Item> equipment;
 
-    public Hero(String name, int strength, int dexterity, int vitality, int intelligence) {
+    public Character(String name, int strength, int dexterity, int vitality, int intelligence) {
         if(name == null) {
             throw new IllegalArgumentException("Name can't be null!");
         }

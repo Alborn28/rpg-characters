@@ -6,7 +6,7 @@ import items.enumerations.WeaponType;
 import items.exceptions.InvalidArmorException;
 import items.exceptions.InvalidWeaponException;
 
-public class Mage extends Hero {
+public class Mage extends Character {
     public Mage(String name) {
         super(name,1,1,5 ,8);
     }
