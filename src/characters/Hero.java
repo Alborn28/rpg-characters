@@ -23,7 +23,7 @@ public abstract class Hero {
         }
 
         this.name = name;
-        level = 1;
+        this.level = 1;
 
         this.basePrimaryAttributes = new PrimaryAttributes(strength, dexterity, vitality, intelligence);
         this.totalPrimaryAttributes = new PrimaryAttributes(strength, dexterity, vitality, intelligence);
@@ -33,7 +33,7 @@ public abstract class Hero {
         int elementalResistance = intelligence;
         this.secondaryAttributes = new SecondaryAttributes(health, armorRating, elementalResistance);
 
-        equipment = new HashMap<ItemSlot, Item>();
+        this.equipment = new HashMap<ItemSlot, Item>();
     }
 
     public String getName() {
