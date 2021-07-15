@@ -14,7 +14,7 @@ public class Warrior extends Character {
     @Override
     public void levelUp(int level) {
         if(level > 0) {
-            levelUpHero(level,3 * level,2 * level,5 * level,1 * level);
+            levelUpCharacter(level,3 * level,2 * level,5 * level,1 * level);
         }
 
         else {
@@ -46,6 +46,6 @@ public class Warrior extends Character {
 
     @Override
     public double getDPS() {
-        return getDPSHero(getTotalPrimaryAttributes().getStrength());
+        return getDPSCharacter(getTotalPrimaryAttributes().getStrength());
     }
 }

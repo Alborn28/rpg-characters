@@ -48,10 +48,6 @@ public abstract class Character {
         return level;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
     public PrimaryAttributes getBasePrimaryAttributes() {
         return basePrimaryAttributes;
     }
@@ -74,7 +70,7 @@ public abstract class Character {
     /*
      *  Help-method used for levelling up the character. The sub-class inputs how much the level should be increased, and how much each attribute should increase.
      */
-    protected void levelUpHero(int level, int strength, int dexterity, int vitality, int intelligence) {
+    protected void levelUpCharacter(int level, int strength, int dexterity, int vitality, int intelligence) {
         int currentStrength = basePrimaryAttributes.getStrength();
         int currentDexterity = basePrimaryAttributes.getDexterity();
         int currentIntelligence = basePrimaryAttributes.getIntelligence();
@@ -141,7 +137,7 @@ public abstract class Character {
     /*
      *  Help-method used for calculating the DPS. The sub-class inputs the value of their primary attribute. Strength for warrior, intelligence for mage etc.
      */
-    protected double getDPSHero(int primaryAttribute) {
+    protected double getDPSCharacter(int primaryAttribute) {
         if(this.getEquipment().get(ItemSlot.WEAPON) != null) {
             Weapon weapon = (Weapon) this.getEquipment().get(ItemSlot.WEAPON);
             double weaponDPS = weapon.getDPS();

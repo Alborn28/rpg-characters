@@ -14,7 +14,7 @@ public class Rogue extends Character {
     @Override
     public void levelUp(int level) {
         if(level > 0) {
-            levelUpHero(level,1 * level,4 * level,3 * level,1 * level);
+            levelUpCharacter(level,1 * level,4 * level,3 * level,1 * level);
         }
 
         else {
@@ -46,6 +46,6 @@ public class Rogue extends Character {
 
     @Override
     public double getDPS() {
-        return getDPSHero(getTotalPrimaryAttributes().getDexterity());
+        return getDPSCharacter(getTotalPrimaryAttributes().getDexterity());
     }
 }
