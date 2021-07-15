@@ -5,10 +5,14 @@ import characters.Character;
 public class Battle {
     private Character fighter1;
     private Character fighter2;
+    private BattleView view;
 
-    public Battle() {}
+    public Battle(BattleView view) {
+        this.view = view;
+    }
 
-    public Battle(Character fighter1, Character fighter2) {
+    public Battle(BattleView view, Character fighter1, Character fighter2) {
+        this.view = view;
         this.fighter1 = fighter1;
         this.fighter2 = fighter2;
     }
@@ -36,10 +40,10 @@ public class Battle {
         double timeToKillFighter2 = BattleCalculations.timeToKillFighter(fighter2, fighter1);
 
         if(timeToKillFighter1 > timeToKillFighter2)
-            BattleView.printResult(fighter1, fighter2);
+            view.showResult(fighter1, fighter2);
 
         else
-            BattleView.printResult(fighter2, fighter1);
+            view.showResult(fighter2, fighter1);
     }
 
     /*
@@ -61,7 +65,7 @@ public class Battle {
         int seconds = 0;
 
         while((healthFighter1 > 0 && healthFighter2 > 0) && seconds < duration) {
-            BattleView.printStatus(fighter1, fighter2, healthFighter1, healthFighter2);
+            view.showStatus(fighter1, fighter2, healthFighter1, healthFighter2);
 
             healthFighter2 -= BattleCalculations.calcDamagePerSecond(fighter1, fighter2);
             healthFighter1 -= BattleCalculations.calcDamagePerSecond(fighter2, fighter1);
@@ -71,11 +75,11 @@ public class Battle {
         }
 
         if(healthFighter1 > healthFighter2) {
-            BattleView.printResult(fighter1, fighter2, seconds);
+            view.showResult(fighter1, fighter2, seconds);
         }
 
         else {
-            BattleView.printResult(fighter2, fighter1, seconds);
+            view.showResult(fighter2, fighter1, seconds);
         }
     }
 }
