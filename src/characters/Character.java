@@ -68,7 +68,7 @@ public abstract class Character {
     public abstract void levelUp(int level);
 
     /*
-     *  Help-method used for levelling up the character. The sub-class inputs how much the level should be increased, and how much each attribute should increase.
+     * Help-method used for levelling up the character. The sub-class inputs how much the level should be increased, and how much each attribute should increase.
      */
     protected void levelUpCharacter(int level, int strength, int dexterity, int vitality, int intelligence) {
         int currentStrength = basePrimaryAttributes.getStrength();
@@ -185,8 +185,13 @@ public abstract class Character {
 
         result.append("Name: " + this.getName() + "\n");
         result.append("Level: " + this.getLevel() + "\n");
-        result.append(this.getTotalPrimaryAttributes().toString() + "\n");
-        result.append(this.getSecondaryAttributes().toString() + "\n");
+        result.append("Strength: " + this.totalPrimaryAttributes.getStrength() + "\n");
+        result.append("Dexterity: " + this.totalPrimaryAttributes.getDexterity() + "\n");
+        result.append("Vitality: " + this.totalPrimaryAttributes.getVitality() + "\n");
+        result.append("Intelligence: " + this.totalPrimaryAttributes.getIntelligence() + "\n");
+        result.append("Health: " + this.secondaryAttributes.getHealth() + "\n");
+        result.append("Armor rating: " + this.secondaryAttributes.getArmorRating() + "\n");
+        result.append("Elemental resistance: " + this.secondaryAttributes.getElementalResistance() + "\n");
         result.append("DPS: " + this.getDPS());
 
         return result.toString();

@@ -36,7 +36,10 @@ public class Armor extends Item {
 
         result.append(super.toString() + "\n");
         result.append("Armor type: " + armorType.name() + "\n");
-        result.append(this.primaryAttributes.toString());
+        result.append("Strength: " + this.primaryAttributes.getStrength() + "\n");
+        result.append("Dexterity: " + this.primaryAttributes.getDexterity() + "\n");
+        result.append("Vitality: " + this.primaryAttributes.getVitality() + "\n");
+        result.append("Intelligence: " + this.primaryAttributes.getIntelligence());
 
         return result.toString();
     }
