@@ -47,6 +47,16 @@ public class ItemTest {
     }
 
     @Test
+    void TestEquipWeapon_WrongSlot_ShouldThrowException() {
+        Warrior warrior = new Warrior("Max");
+        Weapon weapon = new Weapon("Common Bow",1, ItemSlot.HEAD, WeaponType.AXE,12,0.8);
+
+        assertThrows(InvalidWeaponException.class, () -> {
+            warrior.equip(weapon);
+        });
+    }
+
+    @Test
     void TestEquipArmor_ValidArmor_ShouldPass() {
         Warrior warrior = new Warrior("Max");
         PrimaryAttributes attributes = new PrimaryAttributes(1,0,2,0);
@@ -76,6 +86,17 @@ public class ItemTest {
         Warrior warrior = new Warrior("Max");
         PrimaryAttributes attributes = new PrimaryAttributes(1,0,2,0);
         Armor armor = new Armor("Common Cloth Head Armor",1,ItemSlot.HEAD, ArmorType.CLOTH,attributes);
+
+        assertThrows(InvalidArmorException.class, () -> {
+            warrior.equip(armor);
+        });
+    }
+
+    @Test
+    void TestEquipArmor_WrongSlot_ShouldThrowException() {
+        Warrior warrior = new Warrior("Max");
+        PrimaryAttributes attributes = new PrimaryAttributes(1,0,2,0);
+        Armor armor = new Armor("Common Cloth Head Armor",1,ItemSlot.WEAPON, ArmorType.PLATE,attributes);
 
         assertThrows(InvalidArmorException.class, () -> {
             warrior.equip(armor);
