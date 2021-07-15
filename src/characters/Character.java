@@ -187,7 +187,7 @@ public abstract class Character {
         this.totalPrimaryAttributes.setStrength(strength);
         this.totalPrimaryAttributes.setDexterity(dexterity);
         this.totalPrimaryAttributes.setIntelligence(intelligence);
-        this.totalPrimaryAttributes.setIntelligence(vitality);
+        this.totalPrimaryAttributes.setVitality(vitality);
     }
 
     public String toString() {
