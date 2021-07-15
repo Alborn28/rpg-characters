@@ -11,6 +11,14 @@ public class Weapon extends Item {
     public Weapon(String name, int requiredLevel, ItemSlot slot, WeaponType weaponType, int damage, double attackSpeed) {
         super(name, requiredLevel, slot);
 
+        if(damage < 1) {
+            throw new IllegalArgumentException("Damage must be positive");
+        }
+
+        if(attackSpeed <= 0) {
+            throw new IllegalArgumentException("Attack speed must be positive!");
+        }
+
         this.weaponType = weaponType;
         this.damage = damage;
         this.attackSpeed = attackSpeed;
