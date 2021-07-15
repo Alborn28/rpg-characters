@@ -25,9 +25,11 @@ public abstract class Character {
         this.name = name;
         this.level = 1;
 
+        //Initiate the attributes with the parameters received from the constructor
         this.basePrimaryAttributes = new PrimaryAttributes(strength, dexterity, vitality, intelligence);
         this.totalPrimaryAttributes = new PrimaryAttributes(strength, dexterity, vitality, intelligence);
 
+        //Calculate and initiate the secondary attributes based on the parameters
         int health = vitality * 10;
         int armorRating = strength + dexterity;
         int elementalResistance = intelligence;
@@ -65,12 +67,13 @@ public abstract class Character {
         return equipment;
     }
 
-    public abstract void levelUp(int level);
+    public abstract void levelUp(int levels);
 
     /*
-     * Help-method used for levelling up the character. The sub-class inputs how much the level should be increased, and how much each attribute should increase.
+     * Help-method used for levelling up the character, used by the sub-class.
+     * The sub-class inputs how much the level should be increased, and how much each attribute should increase.
      */
-    protected void levelUpCharacter(int level, int strength, int dexterity, int vitality, int intelligence) {
+    protected void levelUpCharacter(int levels, int strength, int dexterity, int vitality, int intelligence) {
         int currentStrength = basePrimaryAttributes.getStrength();
         int currentDexterity = basePrimaryAttributes.getDexterity();
         int currentIntelligence = basePrimaryAttributes.getIntelligence();
@@ -81,7 +84,7 @@ public abstract class Character {
         basePrimaryAttributes.setVitality(currentVitality += vitality);
         basePrimaryAttributes.setIntelligence(currentIntelligence += intelligence);
 
-        this.level += level;
+        this.level += levels;
 
         this.updateTotalAttributes();
     }
@@ -109,8 +112,8 @@ public abstract class Character {
     }
 
     /*
-     * Method to equip a weapon. First it checks if the character's level is high enough for the armor, then if the armor has a valid ItemSlot.
-     * If both those requirements are fulfilled, the weapon is equipped and the total attributes are updated with the new armor.
+     * Method to equip armor. First it checks if the character's level is high enough for the armor, then if the armor has a valid ItemSlot.
+     * If both those requirements are fulfilled, the armor is equipped and the total attributes are updated with the new armor.
      */
     public boolean equip(Armor armor) throws InvalidArmorException {
         if(armor.getRequiredLevel() <= this.getLevel()) {
@@ -135,7 +138,8 @@ public abstract class Character {
     public abstract double getDPS();
 
     /*
-     *  Help-method used for calculating the DPS. The sub-class inputs the value of their primary attribute. Strength for warrior, intelligence for mage etc.
+     * Help-method used for calculating the DPS, used by the sub-class.
+     * The sub-class inputs the value of their primary attribute. Strength for warrior, intelligence for mage etc.
      */
     protected double getDPSCharacter(int primaryAttribute) {
         if(this.getEquipment().get(ItemSlot.WEAPON) != null) {
@@ -155,7 +159,10 @@ public abstract class Character {
         int health = totalPrimaryAttributes.getVitality() * 10;
         int armorRating = totalPrimaryAttributes.getStrength() + totalPrimaryAttributes.getDexterity();
         int elementalResistance = totalPrimaryAttributes.getIntelligence();
-        this.secondaryAttributes = new SecondaryAttributes(health, armorRating, elementalResistance);
+
+        this.secondaryAttributes.setHealth(health);
+        this.secondaryAttributes.setArmorRating(armorRating);
+        this.secondaryAttributes.setElementalResistance(elementalResistance);
     }
 
     /*
@@ -177,7 +184,10 @@ public abstract class Character {
             }
         }
 
-        totalPrimaryAttributes = new PrimaryAttributes(strength, dexterity, vitality, intelligence);
+        this.totalPrimaryAttributes.setStrength(strength);
+        this.totalPrimaryAttributes.setDexterity(dexterity);
+        this.totalPrimaryAttributes.setIntelligence(intelligence);
+        this.totalPrimaryAttributes.setIntelligence(vitality);
     }
 
     public String toString() {

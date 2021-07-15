@@ -12,9 +12,10 @@ public class Mage extends Character {
     }
 
     @Override
-    public void levelUp(int level) {
-        if(level > 0) {
-            levelUpCharacter(level,1 * level,1 * level,3 * level,5 * level);
+    public void levelUp(int levels) {
+        if(levels > 0) {
+            //Use a help-method to level up, located in the parent-class
+            super.levelUpCharacter(levels,1 * levels,1 * levels,3 * levels,5 * levels);
         }
 
         else {
@@ -44,8 +45,12 @@ public class Mage extends Character {
         }
     }
 
+    /*
+     * DPS is calculated using a help-method in the parent-class.
+     * The parameter used is this character's primary attribute, in the Mage's case it's Intelligence.
+     */
     @Override
     public double getDPS() {
-        return getDPSCharacter(getTotalPrimaryAttributes().getIntelligence());
+        return super.getDPSCharacter(getTotalPrimaryAttributes().getIntelligence());
     }
 }

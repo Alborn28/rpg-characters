@@ -12,9 +12,10 @@ public class Ranger extends Character {
     }
 
     @Override
-    public void levelUp(int level) {
-        if(level > 0) {
-            levelUpCharacter(level,1 * level,5 * level,2 * level,1 * level);
+    public void levelUp(int levels) {
+        if(levels > 0) {
+            //Use a help-method to level up, located in the parent-class
+            super.levelUpCharacter(levels,1 * levels,5 * levels,2 * levels,1 * levels);
         }
 
         else {
@@ -44,8 +45,12 @@ public class Ranger extends Character {
         }
     }
 
+    /*
+     * DPS is calculated using a help-method in the parent-class.
+     * The parameter used is this character's primary attribute, in the Ranger's case it's Dexterity.
+     */
     @Override
     public double getDPS() {
-        return getDPSCharacter(getTotalPrimaryAttributes().getDexterity());
+        return super.getDPSCharacter(getTotalPrimaryAttributes().getDexterity());
     }
 }

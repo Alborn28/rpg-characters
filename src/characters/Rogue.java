@@ -12,9 +12,10 @@ public class Rogue extends Character {
     }
 
     @Override
-    public void levelUp(int level) {
-        if(level > 0) {
-            levelUpCharacter(level,1 * level,4 * level,3 * level,1 * level);
+    public void levelUp(int levels) {
+        if(levels > 0) {
+            //Use a help-method to level up, located in the parent-class
+            levelUpCharacter(levels,1 * levels,4 * levels,3 * levels,1 * levels);
         }
 
         else {
@@ -44,6 +45,10 @@ public class Rogue extends Character {
         }
     }
 
+    /*
+     * DPS is calculated using a help-method in the parent-class.
+     * The parameter used is this character's primary attribute, in the Rogue's case it's Dexterity.
+     */
     @Override
     public double getDPS() {
         return getDPSCharacter(getTotalPrimaryAttributes().getDexterity());
