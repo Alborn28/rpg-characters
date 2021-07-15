@@ -8,6 +8,14 @@ public abstract class Item {
     private ItemSlot slot;
 
     public Item(String name, int requiredLevel, ItemSlot slot) {
+        if(name == null) {
+            throw new IllegalArgumentException("Name can't be null!");
+        }
+
+        if(requiredLevel < 1) {
+            throw new IllegalArgumentException("Required level must be positive!");
+        }
+
         this.name = name;
         this.requiredLevel = requiredLevel;
         this.slot = slot;
