@@ -2,7 +2,7 @@
 
 ## Task
 
-The task of assignment 1 is to create a Java console application that creates RPG characters. There are four different types of characters: Mage, Ranger, Rogue and Warrior. Each Character has the following primary stats: Strength, Dexterity, Vitality and Intelligence. There are also secondary stats which are calculated based on the primary stats, they are: Health, Armor Rating and Elemental Resistance. A Character is able to level up, which increases their stats, as well as equip armor and weapons. Equipping armor gives bonuses to the hero's stats. There is also a Battle-class where you can simulate fights between characters.
+The task was to create a Java console application that creates RPG characters. There are four different types of characters: Mage, Ranger, Rogue and Warrior. Each Character has the following primary stats: Strength, Dexterity, Vitality and Intelligence. There are also secondary stats which are calculated based on the primary stats, they are: Health, Armor Rating and Elemental Resistance. A Character is able to level up, which increases their stats, as well as equip armor and weapons. Equipping armor gives bonuses to the hero's stats. There is also a Battle-class where you can simulate fights between characters.
 
 ## Project Structure
 
