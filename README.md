@@ -1,4 +1,4 @@
-# Assignment 1
+# RPG Characters
 
 ## Task
 
